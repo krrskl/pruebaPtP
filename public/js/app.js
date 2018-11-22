@@ -49854,7 +49854,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(42)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(57)
 /* template */
 var __vue_template__ = __webpack_require__(56)
 /* template functional */
@@ -50407,25 +50407,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "body__home" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("button", {
+      staticStyle: {
+        "background-image": "url('./../../images/icon_pse_128.png')"
+      }
+    }),
+    _vm._v(" "),
+    _c("section", { staticClass: "section__selectPerson" }, [
+      _c("strong", [_vm._v("Seleccione el tipo de cliente:")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedTypeClient,
+              expression: "selectedTypeClient"
+            }
+          ],
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedTypeClient = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "", value: "" } }, [
+            _vm._v("Seleccione uno")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "persona" } }, [_vm._v("Persona")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "empresa" } }, [_vm._v("Empresa")])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "body__home" }, [
+    return _c("h4", [
       _c("strong", [
         _vm._v("Bienvenido! seleccione el método de pago que usará:")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("button", {
-        staticStyle: {
-          "background-image": "url('./../../images/icon_pse_128.png')"
-        }
-      })
+      ])
     ])
   }
 ]
@@ -50437,6 +50481,40 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-2bdc2210", module.exports)
   }
 }
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selectedTypeClient: ""
+    };
+  }
+});
 
 /***/ })
 /******/ ]);

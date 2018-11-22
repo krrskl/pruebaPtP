@@ -1,10 +1,32 @@
 <template>
   <div class="body__home">
-    <strong>Bienvenido! seleccione el método de pago que usará:</strong>
+    <h4>
+      <strong>Bienvenido! seleccione el método de pago que usará:</strong>
+    </h4>
     <br>
     <button style="background-image: url('./../../images/icon_pse_128.png');"></button>
+
+    <section class="section__selectPerson">
+      <strong>Seleccione el tipo de cliente:</strong>
+      <select v-model="selectedTypeClient">
+        <option disabled value="">Seleccione uno</option>
+        <option value="persona">Persona</option>
+        <option value="empresa">Empresa</option>
+      </select>
+    </section>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedTypeClient: ""
+    };
+  }
+};
+</script>
+
 
 <style scoped>
 .body__home {
