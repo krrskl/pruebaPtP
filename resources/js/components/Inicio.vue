@@ -40,7 +40,7 @@ export default {
       });
     },
     redirect() {
-      
+      console.log("Redireccionando...")
     }
   }
 };

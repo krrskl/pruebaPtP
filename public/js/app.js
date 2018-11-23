@@ -50439,7 +50439,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.banks = response.data.data.item;
       });
     },
-    redirect: function redirect() {}
+    redirect: function redirect() {
+      console.log("Redireccionando...");
+    }
   }
 });
 
