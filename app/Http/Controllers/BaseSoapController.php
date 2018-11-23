@@ -15,14 +15,4 @@ class BaseSoapController extends Controller
         );
         return self::$context = stream_context_create(self::$options);
     }
-    public function loadXmlStringAsArray($xmlString)
-    {
-        $array = (array) @simplexml_load_string($xmlString);
-        if (!$array) {
-            $array = (array) @json_decode($xmlString, true);
-        } else {
-            $array = (array) @json_decode(json_encode($array), true);
-        }
-        return $array;
-    }
 }

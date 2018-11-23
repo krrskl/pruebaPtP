@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Response;
 use \Cache as Cache;
 
 class SoapController extends BaseSoapController
@@ -13,9 +14,8 @@ class SoapController extends BaseSoapController
         try {
 
             if (Cache::has('BankList')) {
-                echo "Cacheado <br>";
-
-                dd(Cache::get('BankList'));
+                $data = $this->loadXmlStringAsArray(Cache::get('BankList'));
+                return Response::json(compact('data', 200));
             } else {
                 echo "El elemento no está en caché <br>";
 
@@ -31,11 +31,12 @@ class SoapController extends BaseSoapController
                     ],
                 ];
 
-                $data = $this->service->getBankList($params);
-                $expire = now()->addMinutes(1);
-                Cache::add('BankList', $data, $expire);
+                $response = $this->service->getBankList($params);
+                $expire = now()->addMinutes(now()->diffInMinutes(now()::tomorrow()));
+                Cache::add('BankList', $response, $expire);
 
-                dd($data);
+                $data = $this->loadXmlStringAsArray(Cache::get('BankList'));
+                return Response::json(compact('data', 200));
             }
 
         } catch (\Exception $e) {
@@ -51,5 +52,11 @@ class SoapController extends BaseSoapController
     public function getHash($seed, $tranKey)
     {
         return sha1($seed . $tranKey, false);
+    }
+
+    public function loadXmlStringAsArray($xmlString)
+    {
+        $dat = json_decode(json_encode($xmlString), true);
+        return $dat["getBankListResult"];
     }
 }
