@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       selectedTypeClient: "",
-      selectedBank: 1022,
+      selectedBank: 0,
       banks: [],
       sectionPSE: false,
       show: false,
