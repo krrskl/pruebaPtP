@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePseTransactionRequestTable extends Migration
+class CreatePseTransactionRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePseTransactionRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('PSETransactionRequest', function (Blueprint $table) {
+        Schema::create('pse_transaction_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("transactionID");
             $table->string("sessionID", 32);
@@ -37,6 +37,6 @@ class CreatePseTransactionRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PSETransactionRequest');
+        Schema::dropIfExists('pse_transaction_requests');
     }
 }
