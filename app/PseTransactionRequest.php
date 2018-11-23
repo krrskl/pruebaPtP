@@ -23,6 +23,5 @@ class PseTransactionRequest extends Model
      * @var array
      */
     protected $hidden = [];
-
     protected $table = "pse_transaction_requests";
 }
