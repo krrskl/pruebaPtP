@@ -9,8 +9,8 @@
     <strong>Seleccione el tipo de cliente:</strong>
     <select  @change="event()" v-model="selectedTypeClient">
       <option disabled value="">Seleccione uno</option>
-      <option value="persona">Persona</option>
-      <option value="empresa">Empresa</option>
+      <option value="0">Persona</option>
+      <option value="1">Empresa</option>
     </select>
     <br>
 
